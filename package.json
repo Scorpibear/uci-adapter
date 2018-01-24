@@ -1,0 +1,34 @@
+{
+  "name": "uci-adapter",
+  "version": "0.1.0",
+  "description": "UCI (universal chess interface) adapter with user-friendly interface, encapsulating low-level uci commands call",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "tdd": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scorpibear/uci-adapter.git"
+  },
+  "keywords": [
+    "UCI",
+    "chess",
+    "engine",
+    "adapter",
+    "wrapper"
+  ],
+  "author": "Scorpibear",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Scorpibear/uci-adapter/issues"
+  },
+  "homepage": "https://github.com/Scorpibear/uci-adapter#readme",
+  "dependencies": {
+    "uci": "Scorpibear/uci"
+  },
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
+}
