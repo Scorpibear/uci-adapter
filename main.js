@@ -1,6 +1,6 @@
 // supports analysis to specified depth
 
-const UCI = require('uci');
+const UCIEngine = require('node-uci').Engine;
 
 let uciEngine;
 
@@ -8,28 +8,18 @@ let uciOptions = [];
 
 class Engine {
   constructor(pathToChessEngine) {
-    uciEngine = new UCI(pathToChessEngine);
+    uciEngine = new UCIEngine(pathToChessEngine);
   }
 
-  analyzeToDepth(fen, depth) {
-    return uciEngine.runProcess().then(function() {
-      return uciEngine.uciCommand();
-    }).then(function() {
-      return uciEngine.isReadyCommand();
-    }).then(function() {
-      uciOptions.forEach(function(option) {
-        uciEngine.setOptionCommand(option.name, option.value);
-      });
-      return uciEngine.isReadyCommand();
-    }).then(function() {
-      return uciEngine.uciNewGameCommand();
-    }).then(function() {
-      return uciEngine.positionCommand(fen);
-    }).then(function() {
-      return uciEngine.goDepthCommand(depth /* , function infoHandler(info) {
-        console.log(info)
-      }*/);
+  async analyzeToDepth(fen, depth) {
+    await uciEngine.init();
+    uciOptions.forEach(
+      async function(option) {
+      await uciEngine.setoption(option.name, option.value);
     });
+    await uciEngine.isready();
+    await uciEngine.position(fen);
+    return uciEngine.go({depth});
   }
   setUciOptions(options) {
     uciOptions = options;

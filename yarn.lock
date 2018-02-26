@@ -276,7 +276,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@^6.11.6, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -335,6 +335,10 @@ block-stream@*:
   resolved "https://registry.yarnpkg.com/block-stream/-/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
   dependencies:
     inherits "~2.0.0"
+
+bluebird@^3.4.0:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
 boom@2.x.x:
   version "2.10.1"
@@ -1161,10 +1165,6 @@ is-regex@^1.0.4:
   dependencies:
     has "^1.0.1"
 
-is-running@1.0.x:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/is-running/-/is-running-1.0.5.tgz#e088a476788da9b13b913c6c813d5640ad63d228"
-
 is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -1795,6 +1795,15 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
+node-uci@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/node-uci/-/node-uci-1.3.0.tgz#f70f5df54ad0b0286c9351472b7ab4cf01e6b652"
+  dependencies:
+    babel-runtime "^6.11.6"
+    bluebird "^3.4.0"
+    debug "^2.2.0"
+    lodash "^4.13.1"
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -2048,10 +2057,6 @@ punycode@^1.4.1:
 punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
-
-q@1.4.x:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"
 
 qs@~6.4.0:
   version "6.4.0"
@@ -2392,10 +2397,6 @@ string-width@^2.0.0, string-width@^2.1.1:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^4.0.0"
 
-string@1.7.x:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/string/-/string-1.7.0.tgz#35e917b42f758f3a57c551f665ace4d6a0988644"
-
 string_decoder@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.0.3.tgz#0fc67d7c141825de94282dd536bec6b9bce860ab"
@@ -2530,14 +2531,6 @@ type-check@~0.3.2:
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
   dependencies:
     prelude-ls "~1.1.2"
-
-uci@Scorpibear/uci:
-  version "0.4.0"
-  resolved "https://codeload.github.com/Scorpibear/uci/tar.gz/6ecd2120c9584293ca301807da50abd0aa45761c"
-  dependencies:
-    is-running "1.0.x"
-    q "1.4.x"
-    string "1.7.x"
 
 uglify-js@^2.6:
   version "2.8.29"
