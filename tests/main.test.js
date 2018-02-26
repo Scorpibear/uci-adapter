@@ -8,6 +8,7 @@ describe('engine', function() {
       spyOn(UCI.prototype, 'isready').and.returnValue(Promise.resolve(0));
       spyOn(UCI.prototype, 'position').and.returnValue(Promise.resolve(0));
       spyOn(UCI.prototype, 'go').and.returnValue(Promise.resolve(0));
+      spyOn(UCI.prototype, 'quit').and.returnValue(Promise.resolve(0));
 
       engine.analyzeToDepth("", 5).then(() => {
         expect(UCI.prototype.init).toHaveBeenCalled();
@@ -27,6 +28,7 @@ describe('engine', function() {
       spyOn(UCI.prototype, 'setoption');
       spyOn(UCI.prototype, 'position').and.returnValue(Promise.resolve(0));
       spyOn(UCI.prototype, 'go').and.returnValue(Promise.resolve(0));
+      spyOn(UCI.prototype, 'quit').and.returnValue(Promise.resolve(0));
       engine.setUciOptions([{name: "threads", value: 3}]);
 
       engine.analyzeToDepth("", 1).then(() => {

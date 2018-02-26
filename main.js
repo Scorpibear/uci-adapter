@@ -19,7 +19,9 @@ class Engine {
     });
     await uciEngine.isready();
     await uciEngine.position(fen);
-    return uciEngine.go({depth});
+    let result = await uciEngine.go({depth});
+    await uciEngine.quit();
+    return result;
   }
   setUciOptions(options) {
     uciOptions = options;
