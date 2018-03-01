@@ -12,16 +12,21 @@ class Engine {
   }
 
   async analyzeToDepth(fen, depth) {
-    await uciEngine.init();
-    uciOptions.forEach(
-      async function(option) {
-      await uciEngine.setoption(option.name, option.value);
-    });
-    await uciEngine.isready();
-    await uciEngine.position(fen);
-    let result = await uciEngine.go({depth});
-    await uciEngine.quit();
-    return result;
+    try{
+      await uciEngine.init();
+      uciOptions.forEach(
+        async function(option) {
+        await uciEngine.setoption(option.name, option.value);
+      });
+      await uciEngine.isready();
+      await uciEngine.position(fen);
+      let result = await uciEngine.go({depth});
+      await uciEngine.quit();
+      return result;
+    } catch(err) {
+      console.error(err);
+      throw err;
+    }
   }
   setUciOptions(options) {
     uciOptions = options;

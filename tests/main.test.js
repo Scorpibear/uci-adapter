@@ -18,6 +18,11 @@ describe('engine', function() {
         done();
       });
     });
+    it('catches rejected promises and throws an error', () => {
+      let UCI = require('node-uci').Engine;
+      spyOn(UCI.prototype, 'init').and.returnValue(Promise.reject("not good path"));
+      expect(engine.analyzeToDepth("", 5)).rejects.toBe("not good path");
+    })
   });
   describe('setUciOptions', () => {
     const engine = new Engine('');
