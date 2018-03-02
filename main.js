@@ -14,15 +14,15 @@ class Engine {
       let uciEngine = new UCIEngine(this.path);
       await uciEngine.init();
       console.log('engine initialized');
-      this.uciOptions.forEach(
-        async function(option) {
-          try{
-            await uciEngine.setoption(option.name, option.value);
-            console.log(`option ${option} was set`);
-          } catch(err) {
-            console.error(`could not set option '${option}'`, err);
-          };
-      });
+      for(let i=0; i<this.uciOptions.length; i++) {
+        let option = this.uciOptions[i];
+        try{
+          await uciEngine.setoption(option.name, option.value);
+          console.log(`option ${option} was set`);
+        } catch(err) {
+          console.error(`could not set option '${option}'`, err);
+        };
+      }
       await uciEngine.isready();
       console.log('engine is ready');
       await uciEngine.position(fen);
