@@ -2,21 +2,23 @@
 
 const UCIEngine = require('node-uci').Engine;
 
-let uciEngine;
-
-let uciOptions = [];
-
 class Engine {
   constructor(pathToChessEngine) {
-    uciEngine = new UCIEngine(pathToChessEngine);
+    this.path = pathToChessEngine;
+    this.uciOptions = [];
   }
 
   async analyzeToDepth(fen, depth) {
     try{
+      let uciEngine = new UCIEngine(this.path);
       await uciEngine.init();
-      uciOptions.forEach(
+      this.uciOptions.forEach(
         async function(option) {
-        await uciEngine.setoption(option.name, option.value);
+          try{
+            await uciEngine.setoption(option.name, option.value);
+          } catch(err) {
+            console.error(`could not set option '${option}'`, err);
+          };
       });
       await uciEngine.isready();
       await uciEngine.position(fen);
@@ -24,12 +26,12 @@ class Engine {
       await uciEngine.quit();
       return result;
     } catch(err) {
-      console.error(err);
+      console.error('uci-adapter, analyzeToDepth error: ', err);
       throw err;
     }
   }
   setUciOptions(options) {
-    uciOptions = options;
+    this.uciOptions = options;
   }
 
 }
