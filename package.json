@@ -1,6 +1,6 @@
 {
   "name": "uci-adapter",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "UCI (universal chess interface) adapter with user-friendly interface, encapsulating low-level uci commands call",
   "main": "main.js",
   "scripts": {
