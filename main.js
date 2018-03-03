@@ -18,15 +18,18 @@ class Engine {
         let option = this.uciOptions[i];
         try{
           await uciEngine.setoption(option.name, option.value);
-          console.log(`option ${option} was set`);
+          console.log(`option ${option.name} was set to ${option.value}`);
         } catch(err) {
-          console.error(`could not set option '${option}'`, err);
+          console.error(`could not set option '${option.name}' to '${option.value}'`, err);
+          await uciEngine.quit();
+          console.log('engine quit');
+          return;
         };
       }
       await uciEngine.isready();
       console.log('engine is ready');
       await uciEngine.position(fen);
-      console.log('position is set, ready to go with analysis');
+      console.log('position is set, start to go with analysis');
       let result = await uciEngine.go({depth});
       console.log('analysis finished, quiting engine');
       await uciEngine.quit();
@@ -34,6 +37,12 @@ class Engine {
       return result;
     } catch(err) {
       console.error('uci-adapter, analyzeToDepth error: ', err);
+      try {
+        await uciEngine.quit();
+        console.log('engine quit');
+      } catch(err) {
+        console.error(err);
+      }
       throw err;
     }
   }
