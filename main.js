@@ -9,7 +9,6 @@ class Engine {
   }
 
   async analyzeToDepth(fen, depth) {
-    console.log('start to analyze ', fen, ' to ', depth, ' depth')
     try{
       let uciEngine = new UCIEngine(this.path);
       await uciEngine.init();
@@ -29,7 +28,7 @@ class Engine {
       await uciEngine.isready();
       console.log('engine is ready');
       await uciEngine.position(fen);
-      console.log('position is set, start to go with analysis');
+      console.log(`position is set to '${fen}', go with analysis to ${depth} depth`);
       let result = await uciEngine.go({depth});
       console.log('analysis finished, quiting engine');
       await uciEngine.quit();

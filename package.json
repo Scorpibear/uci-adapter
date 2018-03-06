@@ -1,13 +1,13 @@
 {
   "name": "uci-adapter",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "UCI (universal chess interface) adapter with user-friendly interface, encapsulating low-level uci commands call",
   "main": "main.js",
   "scripts": {
-    "test": "jest",
-    "tdd": "jest --watch",
-    "coverage": "jest --coverage",
-    "e2e": "jest tests/e2e.js"
+    "test": "jest /tests/",
+    "tdd": "jest /tests/ --watch",
+    "coverage": "jest /tests/ --coverage",
+    "e2e": "jest /e2e-tests/"
   },
   "repository": {
     "type": "git",
