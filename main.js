@@ -9,8 +9,9 @@ class Engine {
   }
 
   async analyzeToDepth(fen, depth) {
+    let uciEngine = null;
     try{
-      let uciEngine = new UCIEngine(this.path);
+      uciEngine = new UCIEngine(this.path);
       await uciEngine.init();
       console.log('engine initialized');
       for(let i=0; i<this.uciOptions.length; i++) {
@@ -37,8 +38,10 @@ class Engine {
     } catch(err) {
       console.error('uci-adapter, analyzeToDepth error: ', err);
       try {
-        await uciEngine.quit();
-        console.log('engine quit');
+        if(uciEngine) {
+          await uciEngine.quit();
+          console.log('engine quit');
+        }
       } catch(err) {
         console.error(err);
       }
