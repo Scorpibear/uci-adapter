@@ -27,9 +27,12 @@
   },
   "homepage": "https://github.com/Scorpibear/uci-adapter#readme",
   "devDependencies": {
-    "jest": "^22.4.2"
+    "jest": "^22.4.4"
   },
   "dependencies": {
-    "node-uci": "Scorpibear/node-uci"
+    "node-uci": "^1.3.2"
+  },
+  "jest": {
+    "testURL": "http://localhost/"
   }
 }
